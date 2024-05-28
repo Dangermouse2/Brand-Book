@@ -91,8 +91,10 @@ public class BrandBook {
 
         if (!newBrand.isEmpty()) {
             brands.add(new Brand(newBrand));
+            sortBrands();
             refreshList();
             inputField.clear();
+
         }
     }
 
@@ -100,7 +102,13 @@ public class BrandBook {
      * Sorts the brands in the 'brands' list based on their names.
      */
     public void sortBrands() {
-        
+            for(int i = 0; i < brands.size() - 1; i++) {
+                if(brands.get(i).getName().compareTo(brands.get(i + 1).getName()) > 0) {
+                    Brand temp = brands.get(i);
+                    brands.set(i, brands.get(i + 1));
+                    brands.set(i + 1, temp);
+                }
+            }
 
     }
 
